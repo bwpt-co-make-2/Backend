@@ -10,7 +10,7 @@ exports.up = function(knex) {
                 .notNullable();
             tbl.integer('zipcode', 5)
                 .notNullable();
-            tbl.boolean('government official', false);
+            tbl.boolean('government_official', false);
         })
 
         .createTable('issues', tbl => {
