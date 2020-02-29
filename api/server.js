@@ -3,6 +3,11 @@ const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const issuesRouter = require('../issues/issues-router.js');
+
+//middleware
+const authenticate = require('../auth/authenticate-middleware.js');
+
 const authModel = require('../auth/auth-model.js');
 const secrets = require('../config/secrets.js');
 
@@ -10,6 +15,8 @@ const server = express();
 
 server.use(express.json());
 server.use(helmet()); 
+
+server.use('/issues', authenticate, issuesRouter);
 
 server.get('/', (req, res) => {
     res.status(200).json({message: "Thatcher's CoMake API is alive!" })
