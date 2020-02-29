@@ -43,4 +43,42 @@ router.post('/', (req, res) => {
         })
 })
 
+router.put('/:id', (req, res) => {
+    const {id} = req.params;
+    const changes = req.body;
+
+    Issues.getIssuesById(id)
+        .then(issue => {
+            if (issue) {
+                Issues.update(changes, id)
+                    .then(updatedIssue => {
+                        res.status(200).json(updatedIssue)
+                    })
+            } else {
+                res.status(404).json({message: "could not find issue with given id"})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({message: "Failed to update issue"})
+        })
+})
+
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    Issues.remove(id)
+        .then(deleted => {
+            if(deleted) {
+                res.status(200).json({message: "Deleted"})
+            } else {
+                res.status(404).json({message: "Could not find issue with this given id"})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({message: "Error deleting this issue"})
+        })
+})
+
 module.exports = router;

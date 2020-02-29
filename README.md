@@ -4,8 +4,8 @@
 
 #### API Guide!
 
-req = require
-opt = optional
+- req = require
+- opt = optional
 
 |      Description           |   Endpoint          |                                    Shape                                  | 
 | :------------------------- | :------------------ | :------------------------------------------------------------------------ |
