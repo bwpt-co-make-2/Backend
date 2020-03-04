@@ -10,6 +10,8 @@ module.exports = {
 
 function getIssues() {
     return db('issues')
+        .join("users", "users.id", "issues.users_id")
+        .select("*", "users.username")
 }
 
 function getIssuesById(id) {
