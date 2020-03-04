@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const issuesRouter = require('../issues/issues-router.js');
+const upvoteRouter = require('../upvote/upvote-router.js')
 
 //middleware
 const authenticate = require('../auth/authenticate-middleware.js');
@@ -17,6 +18,7 @@ server.use(express.json());
 server.use(helmet()); 
 
 server.use('/issues', authenticate, issuesRouter);
+server.use('/upvotes', authenticate, upvoteRouter);
 
 server.get('/', (req, res) => {
     res.status(200).json({message: "Thatcher's CoMake API is alive!" })

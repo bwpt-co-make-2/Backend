@@ -50,4 +50,4 @@ Login Credentials
 | description               |  string (max 500 char) | required                                           |
 | picture                   |  string   (url)        | optional                                           |
 | zipcode                   |  integer (max 5 num)   | optional                                           |
-| users_id                  |  foreign key `('users)`| required                                           |
+| users_id                  |  foreign key `('users')`| required                                           |
