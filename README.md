@@ -22,6 +22,8 @@ Login Credentials
 | add new issue              | `/issues` (POST)       | {title: req, description: req, picture: opt, zipcode: opt, users_id: req} |
 | update issue               | `/issues/:id` (PUT)    | {title: req, description: req, picture: opt, zipcode: opt, users_id: req} |
 | delete issue               | `/issues/:id` (DELETE) | req {token}                                                               |
+| get all votes from user    | `/upvotes` (GET)       | req {token}                                                               |
+| add a vote                 | `/upvotes` (POST)      | req {token},  
 
 
 
