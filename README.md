@@ -23,7 +23,8 @@ Login Credentials
 | update issue               | `/issues/:id` (PUT)    | {title: req, description: req, picture: opt, zipcode: opt, users_id: req} |
 | delete issue               | `/issues/:id` (DELETE) | req {token}                                                               |
 | get all votes from user    | `/upvotes` (GET)       | req {token}                                                               |
-| add a vote                 | `/upvotes` (POST)      | req {token},  
+| add a vote                 | `/upvotes` (POST)      | req {token},  {users_id: req, issues_id: req}                             |
+| delete a vote              | `/upvotes/:id` (DELETE)| req {token}                                                               |
 
 
 
@@ -45,11 +46,20 @@ Login Credentials
 
 - char = character
 
-|           field           |         data type      |                         metadata                   |
-| :------------------------ | :--------------------- | :------------------------------------------------- |
-| id                        |  unsigned integer      | primary key, auto-increments, generate by database |
-| title                     |  string  (max 256 char)| required                                           |
-| description               |  string (max 500 char) | required                                           |
-| picture                   |  string   (url)        | optional                                           |
-| zipcode                   |  integer (max 5 num)   | optional                                           |
+|           field           |         data type       |                         metadata                   |
+| :------------------------ | :---------------------- | :------------------------------------------------- |
+| id                        |  unsigned integer       | primary key, auto-increments, generate by database |
+| title                     |  string  (max 256 char) | required                                           |
+| description               |  string (max 500 char)  | required                                           |
+| picture                   |  string   (url)         | optional                                           |
+| zipcode                   |  integer (max 5 num)    | optional                                           |
 | users_id                  |  foreign key `('users')`| required                                           |
+
+
+#### Upvotes schema
+
+|      field             |          data type           |                 metadata                           |
+| :--------------------- | :--------------------------- | :------------------------------------------------- |
+| id                     | unsigned integer             | primary key, auto-increments, generate by database |
+| users_id               | foreign key `('users')`      | required                                           |
+| issues_id              | foreign key `('issues')`     | required                                           |
