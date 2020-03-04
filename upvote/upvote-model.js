@@ -18,6 +18,7 @@ async function getVote() {
     let issues = db('upvote')
         // .select("*")
         .innerJoin("issues", "issues_id", "upvote.issues_id")
+        .innerJoin("users", "users.id", "upvote.users_id")
     
     return issues;
 }
