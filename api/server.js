@@ -17,7 +17,9 @@ const server = express();
 server.use(express.json());
 server.use(helmet()); 
 
-server.use('/issues', authenticate, issuesRouter);
+// server.use('/issues', authenticate, issuesRouter);
+//remove authenticate token for /issues for teammate to work on this enpoint
+server.use('/issues', issuesRouter);
 server.use('/upvotes', authenticate, upvoteRouter);
 
 server.get('/', (req, res) => {
